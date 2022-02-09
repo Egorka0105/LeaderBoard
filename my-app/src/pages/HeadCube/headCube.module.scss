@@ -1,0 +1,21 @@
+@import "src/assets/scss/colors";
+@import "src/assets/scss/mixins";
+
+.headCube {
+  @include displayFlex(row, space-between, initial);
+  background-color: $head-background;
+  max-width: 1100px;
+  width: 100%;
+  border-radius: 10px;
+  padding: 10px 20px;
+
+  &__contentDiv {
+    .tittle {
+      color: $tittle-text;
+    }
+  }
+
+  &__logo {
+    background-color: transparent;
+  }
+}
