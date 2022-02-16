@@ -1,45 +1,32 @@
-import { AsyncThunk, createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
-import axios, { AxiosResponse } from 'axios';
+import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
+import axios from 'axios';
+import { baseApiUrl } from '../core/services/baseApi';
 import { IUser } from '../core/interfaces/interfaces';
 
-export const getUsers: AsyncThunk<AxiosResponse<any, any> | undefined, void, {}> = createAsyncThunk(
-	'users/getUsers',
-	// eslint-disable-next-line consistent-return
-	async () => {
-		try {
-			const response = await axios.get('http://coding-test.cube19.io/frontend/v1/starting-state');
-			if (response.statusText !== 'OK') {
-				throw new Error('server error');
-			}
-			return response.data;
-		} catch (error) {
-			console.log(error);
-		}
-	}
-);
+interface InitialState {
+	usersLeaders: IUser[];
+}
 
-// @ts-ignore
+const initialState = { usersLeaders: [] } as InitialState;
+
+export const fetchUserById = createAsyncThunk('users/fetchByIdStatus', async () => {
+	const response = await axios({
+		method: 'get',
+		url: baseApiUrl,
+	});
+	return response.data;
+});
+
 const users = createSlice({
 	name: 'users',
-	initialState: {
-		usersLeaders: [],
-		status: null,
-		error: null,
-	},
+	initialState,
 	reducers: {},
-	extraReducers: {
-		[getUsers.pending]: (state: { status: string; error: null | string }) => {
-			state.status = 'loading';
-			state.error = null;
-		},
-		[getUsers.fulfilled]: (state: { status: string; usersLeaders: any }, action: PayloadAction<any>) => {
-			state.status = 'loaded';
-			state.usersLeaders = action.payload;
-		},
-		[getUsers.rejected]: (state: { status: string; payload: any }, action: PayloadAction<any>) => {
-			state.status = 'rejected';
-			state.payload = action.payload;
-		},
+	extraReducers: builder => {
+		builder.addCase(fetchUserById.fulfilled, (state, action: PayloadAction<IUser[]>) => {
+			action.payload.forEach(user => {
+				state.usersLeaders.push(user);
+			});
+		});
 	},
 });
 
