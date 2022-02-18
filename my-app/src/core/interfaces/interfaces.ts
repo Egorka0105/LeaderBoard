@@ -1,4 +1,4 @@
 export interface IUser {
 	name: string;
-	score: number;
+	score: null | number;
 }
