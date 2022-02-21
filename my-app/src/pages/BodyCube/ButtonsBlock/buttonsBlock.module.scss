@@ -1,0 +1,7 @@
+@import "src/assets/scss/mixins";
+@import "src/assets/scss/colors";
+
+.buttonsBlock {
+  @include displayFlex(row, space-between);
+  margin-top: 10px;
+}

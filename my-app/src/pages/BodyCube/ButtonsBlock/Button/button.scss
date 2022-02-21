@@ -1,0 +1,30 @@
+@import "src/assets/scss/mixins";
+@import "src/assets/scss/colors";
+
+.btn {
+  padding: 10px 20px;
+  border-radius: 4px;
+  background-color: transparent;
+  margin: 0 10px;
+  border: 1px solid $button-border;
+  cursor: pointer;
+
+  &.sortBy {
+    background-color: $button-background;
+    color: $button-textColor;
+  }
+
+  &.previousDay {
+    background-color: transparent;
+  }
+
+  &.nextDay {
+    background-color: transparent;
+  }
+
+  &.addNewScore {
+    background-color: $button-background;
+    color: $button-textColor;
+  }
+}
+

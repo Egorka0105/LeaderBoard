@@ -1,8 +1,8 @@
 import React from 'react';
 import user from 'assets/images/user.png';
-import clN from './user.module.scss';
+import clN from './topUser.module.scss';
 
-function User() {
+function TopUser() {
 	return (
 		<div className={clN.topUser}>
 			<div className={clN.imgDiv}>
@@ -14,4 +14,4 @@ function User() {
 	);
 }
 
-export default User;
+export default TopUser;

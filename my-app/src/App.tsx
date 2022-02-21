@@ -1,17 +1,18 @@
 import React, { FC, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
 import HeadCube from './pages/HeadCube/HeadCube';
 import BodyCube from './pages/BodyCube/BodyCube';
 import 'App.module.scss';
 import clN from './App.module.scss';
-import { fetchUser } from './store/usersCreateslice';
+import { fetchLeaders } from './core/services/getRequest';
+import { useAppDispatch } from './core/services/services';
 
 // eslint-disable-next-line react/function-component-definition
 const App: FC = () => {
-	const dispatch = useDispatch();
+	const dispatch = useAppDispatch();
 	useEffect(() => {
-		dispatch(fetchUser());
+		dispatch(fetchLeaders());
 	}, []);
+
 	return (
 		<div className={clN.app}>
 			<HeadCube />

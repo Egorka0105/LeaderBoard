@@ -1,27 +1,19 @@
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import axios from 'axios';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { IUser } from '../core/interfaces/interfaces';
-import { baseApiUrl } from '../core/services/baseApi';
+import { fetchLeaders } from '../core/services/getRequest';
 
 interface InitialState {
-	loading: boolean;
-	error: null | string;
 	usersLeaders: IUser[];
 }
 
-export const fetchUser = createAsyncThunk('users/fetchByIdStatus', async () => {
-	const response = await axios.get(baseApiUrl);
-	return response.data;
-});
-
-const initialState: InitialState = { usersLeaders: [], loading: false, error: null };
+const initialState: InitialState = { usersLeaders: [] };
 
 const users = createSlice({
 	name: 'users',
 	initialState,
 	reducers: {},
 	extraReducers: builder => {
-		builder.addCase(fetchUser.fulfilled, (state, action) => {
+		builder.addCase(fetchLeaders.fulfilled, (state, action: PayloadAction<IUser>) => {
 			state.usersLeaders.push(action.payload);
 		});
 	},

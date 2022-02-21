@@ -1,5 +1,6 @@
 @import "src/assets/scss/colors";
 @import "src/assets/scss/mixins";
+@import "src/assets/scss/animations";
 
 .headCube {
   @include displayFlex(row, space-between, initial);
@@ -9,6 +10,10 @@
   border-radius: 10px;
   padding: 10px 20px;
   height: 220px;
+  overflow: hidden;
+  margin-top: 20px;
+  position: relative;
+  animation: headCube 1s ease;
 
   &__contentDiv {
     @include displayFlex(column,space-around);
@@ -16,10 +21,12 @@
     width: 100%;
     .tittle {
       color: $tittle-text;
+      animation: headCubeTitleView 2s ease;
     }
   }
 
   &__logo {
     background-color: transparent;
+    animation: logoView 2s ease-in-out;
   }
 }
