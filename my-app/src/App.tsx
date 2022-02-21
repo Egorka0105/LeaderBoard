@@ -5,6 +5,7 @@ import 'App.module.scss';
 import clN from './App.module.scss';
 import { fetchLeaders } from './core/services/getRequest';
 import { useAppDispatch } from './core/services/services';
+import Title from './pages/Title/Title';
 
 // eslint-disable-next-line react/function-component-definition
 const App: FC = () => {
@@ -16,9 +17,7 @@ const App: FC = () => {
 	return (
 		<div className={clN.app}>
 			<HeadCube />
-			<h1 className={clN.app__tittle}>
-				Cube<span className={clN.digit}>19</span>Leaderboard
-			</h1>
+			<Title />
 			<BodyCube />
 		</div>
 	);

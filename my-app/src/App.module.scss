@@ -3,12 +3,4 @@
 
 .app {
   @include displayFlex(column, initial, center);
-
-  &__tittle {
-    margin-top: 10px;
-    .digit {
-      color: $h1;
-    }
-  }
-
 }
