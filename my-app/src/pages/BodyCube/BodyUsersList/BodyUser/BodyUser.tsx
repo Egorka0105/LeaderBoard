@@ -1,18 +1,23 @@
 import React from 'react';
-import user from 'assets/images/user.png';
+import userEditImg from 'assets/images/edit.png';
 import clN from './bodyUser.module.scss';
 
-function BodyUser() {
+interface IProps {
+	name: string;
+	score: number;
+	listNumber: number;
+	photo: string;
+}
+
+function BodyUser({ name, score, listNumber, photo }: IProps) {
 	return (
 		<div className={clN.bodyUser}>
-			<p className={clN.bodyUser__ratingPlace}>1th</p>
-			<img src={user} className={clN.bodyUser__photo} alt="user logo" />
-			<p className={clN.bodyUser__score}>0</p>
-			<p className={clN.bodyUser__name}>name</p>
+			<p className={clN.bodyUser__ratingPlace}>{`${listNumber + 1}th`}</p>
+			<img src={photo} className={clN.bodyUser__photo} alt="user logo" />
+			<p className={clN.bodyUser__score}>{score}</p>
+			<p className={clN.bodyUser__name}>{name}</p>
 			<p className={clN.bodyUser__ratingChange}>status</p>
-			<button type="button" className={clN.bodyUser__edit}>
-				editScore
-			</button>
+			<img className={clN.bodyUser__edit} src={userEditImg} alt="edit user" width="30" height="30" />
 		</div>
 	);
 }

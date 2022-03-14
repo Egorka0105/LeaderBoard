@@ -1,11 +1,21 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import instance from '../API';
-import { baseApiUrl } from './baseApi';
+import userPhoto from 'assets/images/user.png';
+import { nanoid } from 'nanoid';
+import instance, { axiosConfig } from '../API';
+import { IUser } from '../interfaces/interfaces';
 
 // eslint-disable-next-line consistent-return
 export const fetchLeaders = createAsyncThunk('users/fetchLeaders', async function (): Promise<any> {
 	try {
-		return await instance.get(baseApiUrl);
+		const response = await instance.get(axiosConfig.baseURL);
+		const { data } = response;
+		return data.map((el: IUser) => ({
+			...el,
+			id: nanoid(),
+			score: el.score || 0,
+			photo: userPhoto,
+			changePosition: 0,
+		}));
 	} catch (e) {
 		return e;
 	}

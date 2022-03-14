@@ -1,6 +1,7 @@
 //body
 $body-background: #fffee1;
 $allText-color:#fff;
+
 // head component
 $head-background: #ba4cff;
 $tittle-text:#fff;
@@ -9,13 +10,16 @@ $tittle-text:#fff;
 $h1: #92ff82;
 
 // body component
-
 $component-border: rgba(93, 92, 92, 0.38);
 $component-background:#fff;
 
 // button
-
 $button-border: #3b3a3a;
 $button-background: #bf38c9;
 $button-textColor: #fde076;
 
+// modal
+$modalWrapper-background: rgba(59, 58, 58, 0.62);
+$modal-textColor:#000;
+$modal-background:#fff;
+$modalBtn-background:#fde076;

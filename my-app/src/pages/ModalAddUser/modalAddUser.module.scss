@@ -1,0 +1,51 @@
+@import "src/assets/scss/mixins";
+@import "src/assets/scss/colors";
+@import "src/assets/scss/animations";
+
+
+.modalWrapper {
+  position: fixed;
+  @include displayFlex(row, center, center);
+  width: 100%;
+  height: 100%;
+  background-color: $modalWrapper-background;
+
+  .addUser {
+    @include displayFlex(column, center, center);
+    position: relative;
+    padding: 20px 200px;
+    background-color: $modal-background;
+    color: $modal-textColor;
+    text-align: center;
+    border-radius: 10px;
+
+    &__title {
+      margin-top: 50px;
+    }
+
+    &__userName, &__userScore {
+      margin-top: 30px;
+      padding: 5px;
+      width: 200px;
+      border-radius: 6px;
+    }
+
+    &__saveBtn {
+      margin-top: 20px;
+      margin-bottom: 50px;
+      border: 1px solid #3b3a3a;
+      border-radius: 6px;
+      padding: 10px 50px;
+      background-color: $modalBtn-background;
+    }
+
+    &__closeModal {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      width: 30px;
+      height: 30px;
+    }
+  }
+}
+
