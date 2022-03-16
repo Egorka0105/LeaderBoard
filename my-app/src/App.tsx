@@ -7,7 +7,6 @@ import { fetchLeaders } from './core/services/getRequest';
 import { useAppDispatch } from './core/interfaces/interfaces';
 import Title from './pages/Title/Title';
 
-// eslint-disable-next-line react/function-component-definition
 const App: FC = () => {
 	const dispatch = useAppDispatch();
 	useEffect(() => {

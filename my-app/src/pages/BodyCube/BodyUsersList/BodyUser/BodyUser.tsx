@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FC } from 'react';
 import userEditImg from 'assets/images/edit.png';
 import clN from './bodyUser.module.scss';
 
@@ -9,7 +9,7 @@ interface IProps {
 	photo: string;
 }
 
-function BodyUser({ name, score, listNumber, photo }: IProps) {
+const BodyUser: FC<IProps> = ({ name, score, listNumber, photo }) => {
 	return (
 		<div className={clN.bodyUser}>
 			<p className={clN.bodyUser__ratingPlace}>{`${listNumber + 1}th`}</p>
@@ -20,6 +20,6 @@ function BodyUser({ name, score, listNumber, photo }: IProps) {
 			<img className={clN.bodyUser__edit} src={userEditImg} alt="edit user" width="30" height="30" />
 		</div>
 	);
-}
+};
 
 export default BodyUser;

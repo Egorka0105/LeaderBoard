@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { FC } from 'react';
 import clN from './title.module.scss';
 
-function Title() {
+const Title: FC = () => {
 	return (
 		<div>
 			<h1 className={clN.title}>
@@ -9,6 +9,6 @@ function Title() {
 			</h1>
 		</div>
 	);
-}
+};
 
 export default Title;

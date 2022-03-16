@@ -3,7 +3,6 @@ import { ReactComponent as ReactLogo } from 'assets/images/topIcon.svg';
 import clN from './headCube.module.scss';
 import TopUsers from './TopUsers/TopUsers';
 
-// eslint-disable-next-line react/function-component-definition
 const HeadCube: FC = () => {
 	return (
 		<div className={clN.headCube}>

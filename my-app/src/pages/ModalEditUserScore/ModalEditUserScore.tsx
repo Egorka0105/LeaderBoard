@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { FC } from 'react';
 import closed from 'assets/images/closed.png';
 import clN from './modalEditUserScore.module.scss';
 
-function ModalEditUserScore() {
+const ModalEditUserScore: FC = () => {
 	return (
 		<div className={clN.modalWrapper}>
 			<div className={clN.editUser}>
@@ -16,6 +16,6 @@ function ModalEditUserScore() {
 			</div>
 		</div>
 	);
-}
+};
 
 export default ModalEditUserScore;

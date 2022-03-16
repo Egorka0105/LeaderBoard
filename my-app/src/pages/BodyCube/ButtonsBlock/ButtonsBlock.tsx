@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { FC } from 'react';
 import Button from './Button/Button';
 import clN from './buttonsBlock.module.scss';
 
-function ButtonsBlock() {
+const ButtonsBlock: FC = () => {
 	return (
 		<div className={clN.buttonsBlock}>
 			<h2 className={clN.buttonsBlock__title}>Leaders table for this period</h2>
@@ -14,6 +14,6 @@ function ButtonsBlock() {
 			</div>
 		</div>
 	);
-}
+};
 
 export default ButtonsBlock;

@@ -1,13 +1,13 @@
-import React from 'react';
+import React, { FC } from 'react';
 import clN from './topUser.module.scss';
 
-interface ITopUser {
+interface IProps {
 	name: string;
 	photo: string;
 	score: number;
 }
 
-function TopUser({ name, photo, score }: ITopUser) {
+const TopUser: FC<IProps> = ({ name, photo, score }) => {
 	return (
 		<div className={clN.topUser}>
 			<div className={clN.imgDiv}>
@@ -17,6 +17,6 @@ function TopUser({ name, photo, score }: ITopUser) {
 			<h4 className={clN.topUser__name}>{name}</h4>
 		</div>
 	);
-}
+};
 
 export default TopUser;

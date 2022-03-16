@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { FC } from 'react';
 import clN from './modalAddUser.module.scss';
 import closed from '../../assets/images/closed.png';
 
-function ModalAddUser() {
+const ModalAddUser: FC = () => {
 	return (
 		<div className={clN.modalWrapper}>
 			<div className={clN.addUser}>
@@ -16,6 +16,6 @@ function ModalAddUser() {
 			</div>
 		</div>
 	);
-}
+};
 
 export default ModalAddUser;

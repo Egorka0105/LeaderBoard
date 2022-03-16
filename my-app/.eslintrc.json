@@ -28,6 +28,15 @@
         "endOfLine": "auto"
       }
     ],
+    "no-nested-ternary": "off",
+    "no-param-reassign": "off",
+    "react/function-component-definition": [
+      2,
+      {
+        "namedComponents": "arrow-function",
+        "unnamedComponents": "function-expression"
+      }
+    ],
     "import/extensions": [
       "error",
       "ignorePackages",
