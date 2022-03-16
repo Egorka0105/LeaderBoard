@@ -1,0 +1,46 @@
+@keyframes headCube {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+
+@keyframes logoView {
+  0% {
+    position: relative;
+    right: -100%;
+  }
+  50% {
+    position: relative;
+    right: 15%;
+  }
+  100% {
+    position: relative;
+    right: 0;
+  }
+}
+
+@keyframes headCubeTitleView {
+  0% {
+    position: relative;
+    top: -100%;
+  }
+  100% {
+    position: relative;
+    top: 0;
+  }
+}
+
+@keyframes headTopUsersView {
+  0% {
+    position: relative;
+    transform: translateY(150%);
+  }
+  100% {
+    position: relative;
+    transform: translateX(0);
+  }
+}

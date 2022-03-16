@@ -1,0 +1,30 @@
+@import "src/assets/scss/mixins";
+@import "src/assets/scss/colors";
+
+.bodyUser{
+  @include displayFlex(row,start,center);
+  margin-top: 20px;
+  &__ratingPlace{
+    margin-right: 30px;
+  }
+  &__photo{
+    width: 50px;
+    height: 50px;
+    border-radius: 10px;
+    margin-right: 30px;
+  }
+  &__score{
+    margin-right: 30px;
+  }
+  &__name{
+    margin-right: 30px;
+  }
+  &__ratingChange{
+    margin-left: auto;
+  }
+  &__edit{
+    margin-left: 50px;
+    margin-right: 10px;
+
+  }
+}

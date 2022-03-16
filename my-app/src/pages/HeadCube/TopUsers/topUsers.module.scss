@@ -1,0 +1,10 @@
+@import "src/assets/scss/mixins";
+@import "src/assets/scss/colors";
+@import "src/assets/scss/animations";
+
+.topUsers {
+  @include displayFlex(row, space-between, center);
+  background-color: transparent;
+  animation: headTopUsersView 2s ease;
+
+}
