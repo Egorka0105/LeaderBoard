@@ -5,3 +5,41 @@
   @include displayFlex(row, space-between);
   margin-top: 10px;
 }
+
+.nextDay {
+  background-color: transparent;
+  padding: 10px 20px;
+  border-radius: 4px;
+  margin: 0 10px;
+  border: 1px solid $button-border;
+  cursor: pointer;
+}
+
+.previousDay {
+  padding: 10px 20px;
+  border-radius: 4px;
+  background-color: transparent;
+  margin: 0 10px;
+  border: 1px solid $button-border;
+  cursor: pointer;
+}
+
+.sortBy {
+  background-color: $button-background;
+  color: $button-textColor;
+  padding: 10px 20px;
+  border-radius: 4px;
+  margin: 0 10px;
+  border: 1px solid $button-border;
+  cursor: pointer;
+}
+
+.addNewScore {
+  background-color: $button-background;
+  color: $button-textColor;
+  padding: 10px 20px;
+  border-radius: 4px;
+  margin: 0 10px;
+  border: 1px solid $button-border;
+  cursor: pointer;
+}

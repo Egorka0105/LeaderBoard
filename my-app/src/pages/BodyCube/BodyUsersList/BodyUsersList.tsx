@@ -5,11 +5,21 @@ import BodyUser from './BodyUser/BodyUser';
 
 const BodyUsersList: FC = () => {
 	const users = useAppSelector(state => state.leaders.usersLeaders[state.leaders.day]);
+
 	return (
 		<div className={clN.bodyUsersList}>
 			{!!users &&
 				users.map((el, i) => {
-					return <BodyUser key={el.id} name={el.name} score={el.score} listNumber={i} photo={el.photo} />;
+					return (
+						<BodyUser
+							key={el.id}
+							name={el.name}
+							score={el.score}
+							listNumber={i}
+							photo={el.photo}
+							changePosition={el.changePosition}
+						/>
+					);
 				})}
 		</div>
 	);
