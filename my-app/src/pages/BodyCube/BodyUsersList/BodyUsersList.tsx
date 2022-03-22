@@ -1,15 +1,18 @@
 import React, { FC } from 'react';
-import { useAppSelector } from 'core/interfaces/interfaces';
+import { IUser } from 'core/interfaces/interfaces';
 import clN from './bodyUsersList.module.scss';
 import BodyUser from './BodyUser/BodyUser';
 
-const BodyUsersList: FC = () => {
-	const users = useAppSelector(state => state.leaders.usersLeaders[state.leaders.day]);
+interface IProps {
+	day: number;
+	users: IUser[][];
+}
 
+const BodyUsersList: FC<IProps> = ({ day, users }) => {
 	return (
 		<div className={clN.bodyUsersList}>
-			{!!users &&
-				users.map((el, i) => {
+			{!!users[day] &&
+				users[day].map((el, i) => {
 					return (
 						<BodyUser
 							key={el.id}

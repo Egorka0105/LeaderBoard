@@ -17,7 +17,13 @@ const BodyUser: FC<IProps> = ({ name, score, listNumber, photo, changePosition }
 			<img src={photo} className={clN.bodyUser__photo} alt="user logo" />
 			<p className={clN.bodyUser__score}>{score}</p>
 			<p className={clN.bodyUser__name}>{name}</p>
-			<p className={clN.bodyUser__ratingChange}>{changePosition}</p>
+			{changePosition > 0 ? (
+				<p className={clN.bodyUser__ratingChange}>{`${changePosition} place`}</p>
+			) : changePosition < 0 ? (
+				<p className={clN.bodyUser__ratingChange}>{`${changePosition} place`}</p>
+			) : (
+				<p className={clN.bodyUser__ratingChange}>No Change</p>
+			)}
 			<img className={clN.bodyUser__edit} src={userEditImg} alt="edit user" width="30" height="30" />
 		</div>
 	);

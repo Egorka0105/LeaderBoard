@@ -18,6 +18,11 @@ const users = createSlice({
 		nextDay: state => {
 			state.day += 1;
 		},
+		sortUsers: state => {
+			state.usersLeaders[state.day] = state.usersLeaders[state.day].sort((a: IUser, b: IUser) =>
+				a.score > b.score ? -1 : b.score > a.score ? 1 : 0
+			);
+		},
 	},
 	extraReducers: builder => {
 		builder.addCase(fetchLeaders.fulfilled, (state, action: PayloadAction<Array<IUser>>) => {
@@ -40,5 +45,5 @@ const users = createSlice({
 	},
 });
 
-export const { prevDay, nextDay } = users.actions;
+export const { prevDay, nextDay, sortUsers } = users.actions;
 export default users.reducer;
