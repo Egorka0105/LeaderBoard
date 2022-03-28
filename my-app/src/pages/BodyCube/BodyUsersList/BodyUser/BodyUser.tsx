@@ -8,9 +8,10 @@ interface IProps {
 	listNumber: number;
 	photo: string;
 	changePosition: number;
+	openEditModal: () => void;
 }
 
-const BodyUser: FC<IProps> = ({ name, score, listNumber, photo, changePosition }) => {
+const BodyUser: FC<IProps> = ({ name, score, listNumber, photo, changePosition, openEditModal }) => {
 	return (
 		<div className={clN.bodyUser}>
 			<p className={clN.bodyUser__ratingPlace}>{`${listNumber + 1}th`}</p>
@@ -24,7 +25,9 @@ const BodyUser: FC<IProps> = ({ name, score, listNumber, photo, changePosition }
 			) : (
 				<p className={clN.bodyUser__ratingChangeDefault}>No Change</p>
 			)}
-			<img className={clN.bodyUser__edit} src={userEditImg} alt="edit user" width="30" height="30" />
+			<button type="button" className={clN.bodyUser__edit} onClick={openEditModal}>
+				<img src={userEditImg} alt="edit user" width="30" height="30" />
+			</button>
 		</div>
 	);
 };

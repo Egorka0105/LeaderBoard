@@ -23,19 +23,23 @@ const users = createSlice({
 				a.score > b.score ? -1 : b.score > a.score ? 1 : 0
 			);
 		},
+		editUserScore: (state, action) => {
+			console.log(action.payload);
+		},
 	},
 	extraReducers: builder => {
 		builder.addCase(fetchLeaders.fulfilled, (state, action: PayloadAction<Array<IUser>>) => {
 			state.usersLeaders = [
 				...state.usersLeaders,
-				action.payload.map((el, i) =>
-					state.day === 0
-						? { ...el, changePosition: 0 }
-						: {
-								...el,
-								changePosition: state.usersLeaders[state.day - 1].findIndex((item: IUser) => item.name === el.name) - i,
-						  }
-				),
+				action.payload.map((el, i) => {
+					return {
+						...el,
+						changePosition:
+							state.day === 0
+								? 0
+								: state.usersLeaders[state.day - 1].findIndex((item: IUser) => item.name === el.name) - i,
+					};
+				}),
 			];
 			state.topUsers = state.usersLeaders
 				.flat()
@@ -45,5 +49,5 @@ const users = createSlice({
 	},
 });
 
-export const { prevDay, nextDay, sortUsers } = users.actions;
+export const { prevDay, nextDay, sortUsers, editUserScore } = users.actions;
 export default users.reducer;
