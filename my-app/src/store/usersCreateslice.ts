@@ -24,7 +24,12 @@ const users = createSlice({
 			);
 		},
 		editUserScore: (state, action) => {
-			console.log(action.payload);
+			state.usersLeaders[state.day] = state.usersLeaders[state.day].map(el => {
+				return {
+					...el,
+					score: el.id === action.payload.id ? action.payload.score : el.score,
+				};
+			});
 		},
 	},
 	extraReducers: builder => {

@@ -35,6 +35,7 @@ const ModalEditUserScore: FC<Props> = ({ closeModal, open, user }) => {
 							score,
 						};
 						dispatch(editUserScore(userData));
+						closeModal();
 					}}
 				>
 					Save
