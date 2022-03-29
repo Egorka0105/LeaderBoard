@@ -15,6 +15,15 @@ const ModalEditUserScore: FC<Props> = ({ closeModal, open, user }) => {
 	const dispatch = useAppDispatch();
 	const [score, setScore] = useState<number>();
 
+	const handlerSaveClick = (): void => {
+		const userData = {
+			id: user?.id,
+			score,
+		};
+		dispatch(editUserScore(userData));
+		closeModal();
+	};
+
 	return (
 		<div className={cn(clN.modalWrapper, { [clN.open]: open, [clN.close]: !open })}>
 			<div className={clN.editUser}>
@@ -30,12 +39,7 @@ const ModalEditUserScore: FC<Props> = ({ closeModal, open, user }) => {
 					className={clN.editUser__saveBtn}
 					type="button"
 					onClick={() => {
-						const userData = {
-							id: user?.id,
-							score,
-						};
-						dispatch(editUserScore(userData));
-						closeModal();
+						handlerSaveClick();
 					}}
 				>
 					Save

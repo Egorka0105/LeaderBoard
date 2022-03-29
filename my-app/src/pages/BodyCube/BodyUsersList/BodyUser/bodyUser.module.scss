@@ -24,19 +24,20 @@
     margin-right: 30px;
   }
 
-  &__ratingChangeUp {
+  &__ratingChange {
     margin-left: auto;
-    color: $statusUp;
-  }
 
-  &__ratingChangeDown {
-    margin-left: auto;
-    color: $statusDown;
-  }
+    &.up {
+      color: $statusUp;
+    }
 
-  &__ratingChangeDefault {
-    margin-left: auto;
-    color: $statusDefault;
+    &.down {
+      color: $statusDown;
+    }
+
+    &.noChange {
+      color: $statusDefault;
+    }
   }
 
   &__edit {
