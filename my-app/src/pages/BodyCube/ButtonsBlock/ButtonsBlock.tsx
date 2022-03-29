@@ -1,15 +1,15 @@
 import React, { FC, useState } from 'react';
+import { fetchLeaders } from 'core/services/getRequest';
+import { nextDay, prevDay, sortUsers } from 'store/usersCreateslice';
+import { IUser, useAppDispatch } from 'core/interfaces/interfaces';
 import clN from './buttonsBlock.module.scss';
-import { IUser, useAppDispatch } from '../../../core/interfaces/interfaces';
-import { nextDay, prevDay } from '../../../store/usersCreateslice';
-import { fetchLeaders } from '../../../core/services/getRequest';
 
-interface Iprops {
+interface IProps {
 	day: number;
 	users: IUser[][];
 }
 
-const ButtonsBlock: FC<Iprops> = ({ day, users }) => {
+const ButtonsBlock: FC<IProps> = ({ day, users }) => {
 	const dispatch = useAppDispatch();
 	const [disabled, setDisabled] = useState(true);
 
@@ -28,7 +28,13 @@ const ButtonsBlock: FC<Iprops> = ({ day, users }) => {
 		<div className={clN.buttonsBlock}>
 			<h2 className={clN.buttonsBlock__title}>Leaders table for this period</h2>
 			<div>
-				<button type="button" className={clN.sortBy} disabled>
+				<button
+					type="button"
+					className={clN.sortBy}
+					onClick={() => {
+						dispatch(sortUsers());
+					}}
+				>
 					Sort by
 				</button>
 				<button

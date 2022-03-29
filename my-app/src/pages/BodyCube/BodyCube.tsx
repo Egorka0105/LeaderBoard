@@ -10,7 +10,7 @@ const BodyCube: FC = () => {
 	return (
 		<div className={clN.bodyCube}>
 			<ButtonsBlock day={allUsers.day} users={allUsers.usersLeaders} />
-			<BodyUsersList />
+			<BodyUsersList day={allUsers.day} users={allUsers.usersLeaders} />
 		</div>
 	);
 };

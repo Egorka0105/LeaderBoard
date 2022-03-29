@@ -18,19 +18,33 @@ const users = createSlice({
 		nextDay: state => {
 			state.day += 1;
 		},
+		sortUsers: state => {
+			state.usersLeaders[state.day] = state.usersLeaders[state.day].sort((a: IUser, b: IUser) =>
+				a.score > b.score ? -1 : b.score > a.score ? 1 : 0
+			);
+		},
+		editUserScore: (state, action) => {
+			state.usersLeaders[state.day] = state.usersLeaders[state.day].map(el => {
+				return {
+					...el,
+					score: el.id === action.payload.id ? action.payload.score : el.score,
+				};
+			});
+		},
 	},
 	extraReducers: builder => {
 		builder.addCase(fetchLeaders.fulfilled, (state, action: PayloadAction<Array<IUser>>) => {
 			state.usersLeaders = [
 				...state.usersLeaders,
-				action.payload.map((el, i) =>
-					state.day === 0
-						? { ...el, changePosition: 0 }
-						: {
-								...el,
-								changePosition: state.usersLeaders[state.day - 1].findIndex((item: IUser) => item.name === el.name) - i,
-						  }
-				),
+				action.payload.map((el, i) => {
+					return {
+						...el,
+						changePosition:
+							state.day === 0
+								? 0
+								: state.usersLeaders[state.day - 1].findIndex((item: IUser) => item.name === el.name) - i,
+					};
+				}),
 			];
 			state.topUsers = state.usersLeaders
 				.flat()
@@ -40,5 +54,5 @@ const users = createSlice({
 	},
 });
 
-export const { prevDay, nextDay } = users.actions;
+export const { prevDay, nextDay, sortUsers, editUserScore } = users.actions;
 export default users.reducer;
