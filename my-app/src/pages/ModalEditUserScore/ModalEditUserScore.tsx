@@ -13,7 +13,7 @@ type Props = {
 
 const ModalEditUserScore: FC<Props> = ({ closeModal, open, user }) => {
 	const dispatch = useAppDispatch();
-	const [score, setScore] = useState<number>();
+	const [score, setScore] = useState<number>(0);
 
 	const handlerSaveClick = (): void => {
 		const userData = {
@@ -21,6 +21,7 @@ const ModalEditUserScore: FC<Props> = ({ closeModal, open, user }) => {
 			score,
 		};
 		dispatch(editUserScore(userData));
+		setScore(0);
 		closeModal();
 	};
 
@@ -33,6 +34,8 @@ const ModalEditUserScore: FC<Props> = ({ closeModal, open, user }) => {
 					className={clN.editUser__userScore}
 					type="number"
 					placeholder="New score:"
+					value={score}
+					min={0}
 					onChange={event => setScore(+event.target.value)}
 				/>
 				<button

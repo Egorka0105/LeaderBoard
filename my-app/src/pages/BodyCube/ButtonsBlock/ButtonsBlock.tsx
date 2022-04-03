@@ -3,15 +3,17 @@ import { fetchLeaders } from 'core/services/getRequest';
 import { nextDay, prevDay, sortUsers } from 'store/usersCreateslice';
 import { IUser, useAppDispatch } from 'core/interfaces/interfaces';
 import clN from './buttonsBlock.module.scss';
+import ModalAddUser from '../../ModalAddUser/ModalAddUser';
 
-interface IProps {
+type Props = {
 	day: number;
 	users: IUser[][];
-}
+};
 
-const ButtonsBlock: FC<IProps> = ({ day, users }) => {
+const ButtonsBlock: FC<Props> = ({ day, users }) => {
 	const dispatch = useAppDispatch();
 	const [disabled, setDisabled] = useState(true);
+	const [openModal, setOpenModal] = useState(false);
 
 	const goToPreviousDay = () => {
 		dispatch(prevDay());
@@ -22,6 +24,13 @@ const ButtonsBlock: FC<IProps> = ({ day, users }) => {
 		if (users[day] === users[users.length - 1]) dispatch(fetchLeaders());
 		dispatch(nextDay());
 		setDisabled(false);
+	};
+
+	const handleOpenModal = () => {
+		setOpenModal(true);
+	};
+	const handleCloseModal = () => {
+		setOpenModal(false);
 	};
 
 	return (
@@ -56,10 +65,11 @@ const ButtonsBlock: FC<IProps> = ({ day, users }) => {
 				>
 					Next Day
 				</button>
-				<button type="button" className={clN.addNewScore}>
+				<button type="button" className={clN.addNewScore} onClick={handleOpenModal}>
 					+Add new score
 				</button>
 			</div>
+			<ModalAddUser open={openModal} closeModal={handleCloseModal} />
 		</div>
 	);
 };

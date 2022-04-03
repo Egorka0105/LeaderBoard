@@ -18,3 +18,13 @@ export interface InitialState {
 	usersLeaders: IUser[][] | [];
 	topUsers: IUser[];
 }
+
+export interface IAddUserRequest {
+	name: string;
+	score: number;
+}
+
+export interface IAddUserResponse {
+	displayName: string;
+	score: number;
+}

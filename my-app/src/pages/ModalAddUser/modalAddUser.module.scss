@@ -5,10 +5,20 @@
 
 .modalWrapper {
   position: fixed;
-  @include displayFlex(row, center, center);
+  top: 0;
+  left: 0;
+  display: none;
   width: 100%;
   height: 100%;
   background-color: $modalWrapper-background;
+
+  &.open {
+    @include displayFlex(row, center, center);
+  }
+
+  &.close {
+    display: none;
+  }
 
   .addUser {
     @include displayFlex(column, center, center);
@@ -45,6 +55,13 @@
       right: 20px;
       width: 30px;
       height: 30px;
+      background-color: transparent;
+      border: none;
+
+      img {
+        width: 100%;
+        height: auto;
+      }
     }
   }
 }

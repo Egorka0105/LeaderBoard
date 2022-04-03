@@ -4,12 +4,12 @@ import clN from './bodyUsersList.module.scss';
 import BodyUser from './BodyUser/BodyUser';
 import ModalEditUserScore from '../../ModalEditUserScore/ModalEditUserScore';
 
-interface IProps {
+type Props = {
 	day: number;
 	users: IUser[][];
-}
+};
 
-const BodyUsersList: FC<IProps> = ({ day, users }) => {
+const BodyUsersList: FC<Props> = ({ day, users }) => {
 	const [openModal, setOpenModal] = useState(false);
 	const [currentUser, setCurrentUser] = useState<IUser>();
 
