@@ -1,6 +1,9 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { IUser, InitialState } from '../core/interfaces/interfaces';
+import { nanoid } from 'nanoid';
+import avatar from 'assets/images/user.png';
+import { IUser, InitialState, IAddUserResponse } from '../core/interfaces/interfaces';
 import { fetchLeaders } from '../core/services/getRequest';
+import { addNewUser } from '../core/services/setRequest';
 
 const initialState: InitialState = {
 	day: 0,
@@ -50,6 +53,14 @@ const users = createSlice({
 				.flat()
 				.sort((a: IUser, b: IUser) => (a.score > b.score ? -1 : b.score > a.score ? 1 : 0))
 				.slice(0, 4);
+		});
+		builder.addCase(addNewUser.fulfilled, (state, action: PayloadAction<IAddUserResponse>) => {
+			const { score, displayName } = action.payload;
+			state.usersLeaders = [
+				...state.usersLeaders.map((el, i) =>
+					i === state.day ? [...el, { id: nanoid(), photo: avatar, score, name: displayName, changePosition: 0 }] : el
+				),
+			];
 		});
 	},
 });
