@@ -1,0 +1,6 @@
+@import "assets/scss/colors";
+@import "assets/scss/mixins";
+
+.app {
+  @include displayFlex(column, initial, center);
+}
